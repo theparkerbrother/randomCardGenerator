@@ -1,1 +1,68 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+/*
+div {
+  border: dashed 1px red;
+}
+*/
+
+body {
+  background-color: green;
+  text-align: center;
+  height: 100vh; /* Makes the body fill the viewport height */
+}
+
+.mainContainer {
+  justify-content: center;
+  display: flex;
+}
+
+:root {
+  --scale: 1; /* Set the default scale factor */
+}
+
+.card {
+  background-color: white;
+  margin: 10px;
+  width: calc(200px * var(--scale));
+  height: calc(300px * var(--scale));
+  border-radius: calc(10px * var(--scale));
+  box-shadow: calc(2px * var(--scale)) calc(2px * var(--scale))
+    calc(5px * var(--scale)) rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: space-between; /* Distribute items evenly (top, center, bottom) */
+}
+
+.suit {
+  text-align: left;
+  font-size: calc(40px * var(--scale));
+  width: 100%;
+  padding-left: 10px;
+}
+
+.mainCardValue {
+  text-align: center;
+  font-size: calc(75px * var(--scale));
+  margin: calc(5px * var(--scale));
+}
+
+.bottomSuit {
+  transform: rotate(180deg);
+}
+
+.spade {
+  color: black;
+}
+
+.diamond {
+  color: red;
+}
+
+.club {
+  color: black;
+}
+
+.heart {
+  color: red;
+}
