@@ -7,6 +7,16 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
+  const mainContainer = document.getElementById("playingBoard");
+  mainContainer.appendChild(generateNewCard());
+
+  const addCardButton = document.getElementById("addCardButton");
+  addCardButton.addEventListener("click", function() {
+    mainContainer.appendChild(generateNewCard());
+  });
+};
+
+function generateNewCard() {
   const suits = [
     { symbol: "♦", color: "red", name: "diamond" },
     { symbol: "♥", color: "red", name: "heart" },
@@ -30,21 +40,27 @@ window.onload = function() {
     "K"
   ];
 
-  function setSuitAndValue() {
-    let randomSuit = Math.floor(Math.random() * 4);
-    let topSuitItem = document.querySelector(".suit");
-    console.log(`The selected suit is ${suits[randomSuit].name}.`);
-    topSuitItem.classList.add(suits[randomSuit].name);
-    topSuitItem.textContent = suits[randomSuit].symbol;
+  const suit = Math.floor(Math.random() * 4);
+  const cardValue = Math.floor(Math.random() * 13);
 
-    let bottomSuitItem = document.querySelector(".suit.bottomSuit");
-    bottomSuitItem.classList.add(suits[randomSuit].name);
-    bottomSuitItem.textContent = suits[randomSuit].symbol;
+  const card = document.createElement("div");
+  card.classList.add("card");
 
-    let randomValue = Math.floor(Math.random() * 13);
-    let mainValueItem = document.querySelector(".mainCardValue");
-    mainValueItem.textContent = values[randomValue];
-  }
+  const topSuitItem = document.createElement("div");
+  topSuitItem.classList.add("suit", suits[suit].name);
+  topSuitItem.innerText = suits[suit].symbol;
 
-  setSuitAndValue();
-};
+  const mainCardValue = document.createElement("div");
+  mainCardValue.classList.add("mainCardValue");
+  mainCardValue.innerText = values[cardValue];
+
+  const bottomSuitItem = document.createElement("div");
+  bottomSuitItem.classList.add("suit", "bottomSuit", suits[suit].name);
+  bottomSuitItem.innerText = suits[suit].symbol;
+
+  card.appendChild(topSuitItem);
+  card.appendChild(mainCardValue);
+  card.appendChild(bottomSuitItem);
+
+  return card;
+}
